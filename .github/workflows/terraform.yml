@@ -25,6 +25,17 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
+
+    # Run tfsec scanner
+    - name: Clone repo 
+      uses: actions/checkout@master
+    - name: tfsec
+      uses: aquasecurity/tfsec-action@v1.0.0
+    
+    - name: Commit actions
+      uses: EndBug/add-and-commit@v7
+      with:
+        default_author: github_actions
     
     - name: Commit actions
       uses: EndBug/add-and-commit@v7
