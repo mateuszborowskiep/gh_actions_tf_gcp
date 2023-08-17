@@ -33,6 +33,12 @@ jobs:
       uses: actions/checkout@master
     - name: tfsec
       uses: aquasecurity/tfsec-action@v1.0.0
+
+    # Run gitleaks secret scanner
+    - name: gitleaks 
+      uses: gitleaks/gitleaks-action@v2
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Commit actions
       uses: EndBug/add-and-commit@v7
